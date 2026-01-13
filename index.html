@@ -395,13 +395,9 @@
             
             <div class="social-box hidden" id="social-${c.id}" onclick="event.stopPropagation()"> 
                 <div class="comentario-form">
-                    
-					<input type="text" id="input-${c.id}" 
-						placeholder="Clic aquí para comentar..." 
-						onclick="if(!usuarioLogueado) iniciarSesionGoogle()"
-						onkeypress="if(event.key==='Enter') publicarComentario('${c.id}')">
-                    
-					<button onclick="publicarComentario('${c.id}')">➤</button>
+                    <input type="text" id="input-${c.id}" placeholder="Escribe una duda o aporte..." 
+                           onkeypress="if(event.key==='Enter') publicarComentario('${c.id}')">
+                    <button onclick="publicarComentario('${c.id}')">➤</button>
                 </div>
                 
                 <div class="comentarios-view" id="lista-${c.id}">
@@ -580,56 +576,24 @@
 
 <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
 
-<script> 
+<script>
   // Tu configuración de Firebase
- const firebaseConfig = {
-    apiKey: "AIzaSyDvLInjNG-aTtcy9Aah9YYD38HOPpyugPc",
-    authDomain: "cursos-login-41bf9.firebaseapp.com",
-    databaseURL: "https://cursos-login-41bf9-default-rtdb.firebaseio.com",
-    projectId: "cursos-login-41bf9",
-    storageBucket: "cursos-login-41bf9.firebasestorage.app",
-    messagingSenderId: "919456691740",
-    appId: "1:919456691740:web:b941767f9057ebac03d1d9"
+  const firebaseConfig = {
+    apiKey: "AIzaSyA_pHaYgC2Qyg0y9UPJSvs3qOaLQrChFxM",
+    authDomain: "cursosjudiciales-a827a.firebaseapp.com",
+    databaseURL: "https://cursosjudiciales-a827a-default-rtdb.firebaseio.com",
+    projectId: "cursosjudiciales-a827a",
+    storageBucket: "cursosjudiciales-a827a.firebasestorage.app",
+    messagingSenderId: "954066031986",
+    appId: "1:954066031986:web:3af45b6e54537d3b8db9eb",
+    measurementId: "G-CV5NXNJZEQ"
   };
 
   // Inicializamos Firebase
-	firebase.initializeApp(firebaseConfig);
-	const db = firebase.database();
-  
-	const auth = firebase.auth();
-	const provider = new firebase.auth.GoogleAuthProvider();
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
 
-	let usuarioLogueado = null;
-	// Escuchamos si el usuario ya está logueado (para no pedirle login cada vez)
-	auth.onAuthStateChanged(user => {
-    usuarioLogueado = user;
-    if (user) {
-        console.log("Conectado como:", user.displayName);
-        // Opcional: Actualizar placeholders
-        document.querySelectorAll('.comentario-form input').forEach(i => i.placeholder = "Escribe tu duda...");
-    }
-	});
-
-	// Función para invocar el login de Google
-	function iniciarSesionGoogle() {
-    return auth.signInWithPopup(provider)
-        .then(result => {
-            console.log("Login exitoso:", result.user.displayName);
-            usuarioLogueado = result.user;
-            return result.user;
-        })
-        .catch(error => {
-            // Esto nos dirá el código de error exacto (ej: auth/operation-not-allowed)
-            console.error("Error detallado de Firebase:", error.code, error.message);
-            alert("Error: " + error.message); 
-        });
-	}
-
- 
-
-////
   // --- NUEVA LÓGICA PARA CARGAR CURSOS DESDE FIREBASE ---
   let data = []; // Variable global donde guardaremos los cursos que vienen de la nube
 
@@ -656,32 +620,22 @@
   
 
   // FUNCIÓN PARA PUBLICAR UN COMENTARIO
-  // Modificamos la función de publicar para que sea inteligente
-	async function publicarComentario(cursoId) {
+  function publicarComentario(cursoId) {
     const input = document.getElementById(`input-${cursoId}`);
+    const nombre = prompt("Ingresa tu nombre o cargo:") || "Colega Judicial";
     const texto = input.value;
 
     if (texto.trim() === "") return;
 
-    // Si no está logueado, pedimos login justo ahora
-    if (!usuarioLogueado) {
-        const user = await iniciarSesionGoogle();
-        if (user) ejecutarEnvio(cursoId, texto, user);
-    } else {
-        ejecutarEnvio(cursoId, texto, usuarioLogueado);
-    }
-
-    input.value = ""; // Limpiar el campo
-	}
-	
-	function ejecutarEnvio(cursoId, mensaje, user) {
+    // Guardamos en la nube en la carpeta 'comentarios/ID_DEL_CURSO'
     db.ref('comentarios/' + cursoId).push({
-        usuario: user.displayName,
-        foto: user.photoURL,
-        mensaje: mensaje,
-        fecha: new Date().toLocaleString()
+      usuario: nombre,
+      mensaje: texto,
+      fecha: new Date().toLocaleString()
     });
-	}
+
+    input.value = ""; // Limpiamos el cuadro de texto
+  }
 
   // FUNCIÓN PARA CARGAR COMENTARIOS AUTOMÁTICAMENTE
   function cargarComentarios(cursoId) {
@@ -699,21 +653,14 @@
             // ACTUALIZA EL BOTÓN CON EL NÚMERO
             boton.innerHTML = `💬 ${cantidad} ${cantidad === 1 ? 'Comentario' : 'Comentarios'}`;
 
-            // Busca el bucle donde recorres los comentarios y usa este HTML:
-				listaMensajes.forEach(c => {
-					contenedor.innerHTML += `
-						<div class="comentario-item" style="display:flex; gap:10px; margin-bottom:10px; align-items:flex-start;">
-							<img src="${c.foto}" style="width:28px; height:28px; border-radius:50%; border:1px solid #ddd;">
-							<div style="background:#f0f2f5; padding:8px 12px; border-radius:15px; flex:1;">
-								<strong style="font-size:0.85em; color:#004a87; display:block;">${c.usuario}</strong>
-								<span style="font-size:0.9em; color:#333;">${c.mensaje}</span>
-								<small style="display:block; color:#999; font-size:9px; margin-top:4px;">${c.fecha}</small>
-							</div>
-						</div>
-					`;
-				});
-			
-			
+            listaMensajes.forEach(c => {
+                contenedor.innerHTML += `
+                    <div class="comentario-item">
+                        <strong>${c.usuario}:</strong> <span>${c.mensaje}</span><br>
+                        <small style="color: #999; font-size: 10px;">${c.fecha}</small>
+                    </div>
+                `;
+            });
         } else {
             // TEXTO CUANDO NO HAY NADA
             boton.innerHTML = `💬 Sin comentarios`;
@@ -727,8 +674,10 @@
     const box = document.getElementById(`social-${id}`);
     box.classList.toggle('hidden');
 }
+
   
 </script>
+
 
 </body>
 </html>
