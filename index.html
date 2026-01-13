@@ -314,6 +314,8 @@
             <button class="toggle-btn" onclick="switchV('timeline')">MESES</button>
         </div>
         <input type="text" id="search" class="search-input" placeholder="Buscar curso o tema..." onkeyup="runSearch()">
+		<div id="user-status" style="text-align: right; padding: 10px; font-size: 14px;">
+		</div>
         <a href="#" class="download-pdf">📄 DESCARGAR PLAN PDF</a>
     </div>
 
@@ -353,7 +355,7 @@
 
 
 
-    const meses = ["Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Permanente"];
+    const meses = ["Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Permanente"];
 
    
 	
@@ -395,9 +397,13 @@
             
             <div class="social-box hidden" id="social-${c.id}" onclick="event.stopPropagation()"> 
                 <div class="comentario-form">
-                    <input type="text" id="input-${c.id}" placeholder="Escribe una duda o aporte..." 
-                           onkeypress="if(event.key==='Enter') publicarComentario('${c.id}')">
-                    <button onclick="publicarComentario('${c.id}')">➤</button>
+                    
+					<input type="text" id="input-${c.id}" 
+						placeholder="Clic aquí para comentar..." 
+						onclick="if(!usuarioLogueado) iniciarSesionGoogle()"
+						onkeypress="if(event.key==='Enter') publicarComentario('${c.id}')">
+                    
+					<button onclick="publicarComentario('${c.id}')">➤</button>
                 </div>
                 
                 <div class="comentarios-view" id="lista-${c.id}">
@@ -576,24 +582,67 @@
 
 <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
 
-<script>
+<script> 
   // Tu configuración de Firebase
-  const firebaseConfig = {
-    apiKey: "AIzaSyA_pHaYgC2Qyg0y9UPJSvs3qOaLQrChFxM",
-    authDomain: "cursosjudiciales-a827a.firebaseapp.com",
-    databaseURL: "https://cursosjudiciales-a827a-default-rtdb.firebaseio.com",
-    projectId: "cursosjudiciales-a827a",
-    storageBucket: "cursosjudiciales-a827a.firebasestorage.app",
-    messagingSenderId: "954066031986",
-    appId: "1:954066031986:web:3af45b6e54537d3b8db9eb",
-    measurementId: "G-CV5NXNJZEQ"
+ const firebaseConfig = {
+    apiKey: "AIzaSyDvLInjNG-aTtcy9Aah9YYD38HOPpyugPc",
+    authDomain: "cursos-login-41bf9.firebaseapp.com",
+    databaseURL: "https://cursos-login-41bf9-default-rtdb.firebaseio.com",
+    projectId: "cursos-login-41bf9",
+    storageBucket: "cursos-login-41bf9.firebasestorage.app",
+    messagingSenderId: "919456691740",
+    appId: "1:919456691740:web:b941767f9057ebac03d1d9"
   };
 
   // Inicializamos Firebase
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.database();
+	firebase.initializeApp(firebaseConfig);
+	const db = firebase.database();
+  
+	const auth = firebase.auth();
+	const provider = new firebase.auth.GoogleAuthProvider();
 
+	let usuarioLogueado = null;
+	// Escuchamos si el usuario ya está logueado (para no pedirle login cada vez)
+	auth.onAuthStateChanged(user => {
+    const statusDiv = document.getElementById('user-status');
+    usuarioLogueado = user;
+    
+    if (user) {
+        statusDiv.innerHTML = `
+            <span>Conectado como <b>${user.displayName}</b></span> 
+            <button onclick="auth.signOut()" style="background:none; border:none; color:red; cursor:pointer; text-decoration:underline; margin-left:10px;">Salir</button>
+        `;
+        document.querySelectorAll('.comentario-form input').forEach(i => i.placeholder = "Escribe un comentario...");
+    } else {
+        statusDiv.innerHTML = `<small style="color:gray;">No has iniciado sesión</small>`;
+        document.querySelectorAll('.comentario-form input').forEach(i => i.placeholder = "Inicia sesión para comentar...");
+    }
+});
+
+	// Función para invocar el login de Google
+	async function iniciarSesionGoogle() {
+    try {
+        const result = await auth.signInWithPopup(provider);
+        usuarioLogueado = result.user;
+        console.log("Sesión iniciada:", usuarioLogueado.displayName);
+        return result.user;
+    } catch (error) {
+        // Si el usuario simplemente cerró la ventana, no mostramos error
+        if (error.code === 'auth/popup-closed-by-user') {
+            console.log("El usuario cerró la ventana de login sin autenticarse.");
+        } else {
+            // Solo mostrar otros errores técnicos en la consola para no molestar al usuario
+            console.error("Error de Firebase:", error.code, error.message);
+        }
+        return null; 
+    }
+}
+
+ 
+
+////
   // --- NUEVA LÓGICA PARA CARGAR CURSOS DESDE FIREBASE ---
   let data = []; // Variable global donde guardaremos los cursos que vienen de la nube
 
@@ -620,22 +669,34 @@
   
 
   // FUNCIÓN PARA PUBLICAR UN COMENTARIO
-  function publicarComentario(cursoId) {
+  // Modificamos la función de publicar para que sea inteligente
+	async function publicarComentario(cursoId) {
     const input = document.getElementById(`input-${cursoId}`);
-    const nombre = prompt("Ingresa tu nombre o cargo:") || "Colega Judicial";
     const texto = input.value;
 
     if (texto.trim() === "") return;
 
-    // Guardamos en la nube en la carpeta 'comentarios/ID_DEL_CURSO'
-    db.ref('comentarios/' + cursoId).push({
-      usuario: nombre,
-      mensaje: texto,
-      fecha: new Date().toLocaleString()
-    });
+    if (!usuarioLogueado) {
+        const user = await iniciarSesionGoogle();
+        // Si el usuario canceló el login (user es null), salimos de la función sin error
+        if (!user) return; 
+        
+        ejecutarEnvio(cursoId, texto, user);
+    } else {
+        ejecutarEnvio(cursoId, texto, usuarioLogueado);
+    }
 
-    input.value = ""; // Limpiamos el cuadro de texto
-  }
+    input.value = ""; 
+}
+	
+	function ejecutarEnvio(cursoId, mensaje, user) {
+    db.ref('comentarios/' + cursoId).push({
+        usuario: user.displayName,
+        foto: user.photoURL,
+        mensaje: mensaje,
+        fecha: new Date().toLocaleString()
+    });
+	}
 
   // FUNCIÓN PARA CARGAR COMENTARIOS AUTOMÁTICAMENTE
   function cargarComentarios(cursoId) {
@@ -653,14 +714,21 @@
             // ACTUALIZA EL BOTÓN CON EL NÚMERO
             boton.innerHTML = `💬 ${cantidad} ${cantidad === 1 ? 'Comentario' : 'Comentarios'}`;
 
-            listaMensajes.forEach(c => {
-                contenedor.innerHTML += `
-                    <div class="comentario-item">
-                        <strong>${c.usuario}:</strong> <span>${c.mensaje}</span><br>
-                        <small style="color: #999; font-size: 10px;">${c.fecha}</small>
-                    </div>
-                `;
-            });
+            // Busca el bucle donde recorres los comentarios y usa este HTML:
+				listaMensajes.forEach(c => {
+					contenedor.innerHTML += `
+						<div class="comentario-item" style="display:flex; gap:10px; margin-bottom:10px; align-items:flex-start;">
+							<img src="${c.foto}" style="width:28px; height:28px; border-radius:50%; border:1px solid #ddd;">
+							<div style="background:#f0f2f5; padding:8px 12px; border-radius:15px; flex:1;">
+								<strong style="font-size:0.85em; color:#004a87; display:block;">${c.usuario}</strong>
+								<span style="font-size:0.9em; color:#333;">${c.mensaje}</span>
+								<small style="display:block; color:#999; font-size:9px; margin-top:4px;">${c.fecha}</small>
+							</div>
+						</div>
+					`;
+				});
+			
+			
         } else {
             // TEXTO CUANDO NO HAY NADA
             boton.innerHTML = `💬 Sin comentarios`;
