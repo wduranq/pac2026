@@ -347,498 +347,10 @@
 
 <script>
 
-const data = [
-    {   
-		id: "cons_01",
-        m: "CONSTITUCIONAL", 
-        t: "CONFERENCIA: ACOSO Y VIOLENCIA POLÍTICA HACIA LAS MUJERES", 
-        f: "Marzo, 2026", 
-        mod: "Virtual", 
-        h: "2 horas", 
-        p: "Facebook y YouTube", 
-        d: "", 
-        tipo: "CONFERENCIA",
-        caracterAccion: "Matriculación voluntaria y abierta",
-        sistemaEval: "Evaluación de satisfacción",
-        caracter: "", // No se especifica en este bloque
-        mes: "Marzo", 
-        prop: "", 
-        temas: "" 
-    },
-    {  
-        id: "cons_02",
-		m: "CONSTITUCIONAL", 
-        t: "CONFERENCIA: ACCESO A LA JUSTICIA DE GRUPOS VULNERABLES Y DE ATENCIÓN PRIORITARIA. OBLIGACIÓN CONSTITUCIONAL Y CONVENCIONAL", 
-        f: "Agosto 2026", 
-        mod: "Virtual", 
-        h: "4 horas", 
-        p: "Facebook y YouTube", 
-        d: "", 
-        tipo: "CONFERENCIA",
-        caracterAccion: "Matriculación voluntaria y abierta",
-        sistemaEval: "Evaluación de satisfacción",
-        caracter: "", 
-        mes: "Agosto", 
-        prop: "", 
-        temas: "" 
-    },
-    { 
-        id: "cons_03",
-		m: "CONSTITUCIONAL", 
-        t: "CONFERENCIA: ACTOS LESIVOS EN LAS ACCIONES TUTELARES", 
-        f: "Septiembre 2026", 
-        mod: "Virtual", 
-        h: "2 horas", 
-        p: "Facebook y YouTube", 
-        d: "", 
-        tipo: "CONFERENCIA",
-        caracterAccion: "Matriculación voluntaria y abierta",
-        sistemaEval: "Evaluación de satisfacción",
-        caracter: "", 
-        mes: "Septiembre", 
-        prop: "", 
-        temas: "" 
-    },
-    { 
-        id: "cons_04",
-		m: "CONSTITUCIONAL", 
-        t: "CONFERENCIA: LA ÉTICA JUDICIAL COMO COMPONENTE DE LA APLICACIÓN DE LA INTELIGENCIA ARTIFICAL EN LA ADMINISTRACIÓN DE JUSTICIA", 
-        f: "Octubre 2026", 
-        mod: "Virtual", 
-        h: "2 horas", 
-        p: "Facebook y YouTube", 
-        d: "", 
-        tipo: "CONFERENCIA",
-        caracterAccion: "Matriculación voluntaria y abierta",
-        sistemaEval: "Evaluación de satisfacción",
-        caracter: "", 
-        mes: "Octubre", 
-        prop: "", 
-        temas: "" 
-    }, 
-	
-	// --- MATERIA: PENAL ---
-{
-    m: "PENAL",
-    t: "LEY N° 1636 - APLICACIÓN JURISDICCIONAL DE TEORÍA DEL DELITO CON ENFOQUE EN DERECHOS HUMANOS",
-    f: "Mayo - Junio 2026",
-    mod: "Semipresencial",
-    h: "40 horas",
-    p: "Moodle y Zoom",
-    d: "Vocales, Jueces de instrucción penal, jueces de sentencia, Tribunales en materia Penal y Jueces Públicos en materia de Niñez y Adolescencia (capital y provincia)",
-    tipo: "Capacitación y actualización",
-    caracterAccion: "Obligatorio (Art. 224-IV Ley 025 y Art. 77-II Reg. Carrera Judicial)",
-    sistemaEval: "Evaluación de aprendizaje y de satisfacción (Mínimo 71/100)",
-    caracter: "Evaluativo",
-    mes: "Mayo",
-    prop: "Desarrollar habilidades y capacidades de Vocales y Jueces para la interpretación y aplicación de la Ley 1636 en delitos relacionados con la integridad sexual de menores en entornos digitales, fomentando un enfoque práctico e integral, que aborde tanto la prevención como la sanción de estos delitos.",
-    temas: "<b>UNIDAD 1:</b> Marco General, Principios y Alcances de la Ley N° 1636.<br><b>UNIDAD 2:</b> Tipos Penales y Elementos Jurídicos Claves en Entornos Digitales.<br><b>UNIDAD 3:</b> Prueba Digital, Cadena de Custodia y Actuación Judicial.<br><b>UNIDAD 4:</b> Valoración Probatoria, Decisión Judicial y Dosificación de la Pena.<br><b>TRANSVERSAL:</b> Ética, Integridad e Independencia Judicial, Perspectiva de Género y Habilidades Blandas."
-},
-{
-    m: "PENAL",
-    t: "CRIMEN ORGANIZADO EN EL NUEVO CONTEXTO NACIONAL",
-    f: "Marzo - Abril 2026",
-    mod: "Semipresencial",
-    h: "40 Horas",
-    p: "Moodle y Zoom",
-    d: "Vocales, Jueces de Instrucción Penal, Jueces de sentencia y Tribunales de Sentencia (capital y provincias)",
-    tipo: "Capacitación y actualización",
-    caracterAccion: "Obligatorio (Art. 224-IV Ley 025 y Art. 77-II Reg. Carrera Judicial)",
-    sistemaEval: "Evaluación de aprendizaje y de satisfacción (Mínimo 71/100)",
-    caracter: "Evaluativo",
-    mes: "Marzo",
-    prop: "Profundizar competencias para la valoración de pruebas a momento de la emisión de decisiones judiciales y la correcta subsunción de hechos a determinados tipos penales en delitos relacionados al crimen organizado.",
-    temas: "<b>UNIDAD 1:</b> Marco Conceptual y Jurídico del Crimen Organizado.<br><b>UNIDAD 2:</b> Perspectiva Internacional y Cooperación Transnacional.<br><b>UNIDAD 3:</b> Modalidades Específicas y Manifestaciones del Crimen Organizado.<br><b>UNIDAD 4:</b> Violencia y Sicariato: Impacto y Consecuencias.<br><b>UNIDAD 5:</b> Valoración Probatoria.<br><b>UNIDAD 6:</b> Autoría y Participación Criminal en Delitos de Crimen Organizado.<br><b>TRANSVERSAL:</b> Ética, Integridad e Independencia Judicial, Perspectiva de Género y Habilidades Blandas."
-},
-{
-    m: "PENAL",
-    t: "JURISDICCIÓN PENAL EN LA LUCHA CONTRA LA CORRUPCIÓN",
-    f: "Octubre - Noviembre 2026",
-    mod: "Semipresencial",
-    h: "40 Horas",
-    p: "Moodle y Zoom",
-    d: "Vocales, Jueces de Instrucción Penal, Jueces de sentencia y Tribunales de Sentencia (capital y provincia)",
-    tipo: "Capacitación y actualización",
-    caracterAccion: "Obligatorio (Art. 224-IV Ley 025 y Art. 77-II Reg. Carrera Judicial)",
-    sistemaEval: "Evaluación de aprendizaje y de satisfacción (Mínimo 71/100)",
-    caracter: "Evaluativo",
-    mes: "Octubre",
-    prop: "Reforzar los conocimientos y habilidades para la valoración de pruebas y emisión de decisiones judiciales, aplicando normas internas e internacionales relacionadas a delitos de corrupción y la correcta subsunción de hechos a determinados tipos penales.",
-    temas: "<b>UNIDAD 1:</b> Concepto y Alcances.<br><b>UNIDAD 2:</b> Marco Normativo Nacional e Internacional y Jurisprudencial.<br><b>UNIDAD 3:</b> Tipologías y Modalidades de Delitos de Corrupción.<br><b>UNIDAD 4:</b> Control Jurisdiccional de la Investigación y Valoración de la Prueba.<br><b>UNIDAD 5:</b> Función Jurisdiccional y Emisión de Sentencias.<br><b>TRANSVERSAL:</b> Ética, Integridad e Independencia Judicial, Perspectiva de Género y Habilidades Blandas."
-},
-{
-    m: "PENAL",
-    t: "CONFERENCIA: AUTONOMÍA DEL DELITO DE LEGITIMACIÓN DE GANANCIAS ILÍCITAS",
-    f: "Julio 2026",
-    mod: "Virtual",
-    h: "2 horas",
-    p: "Facebook y YouTube",
-    d: "Matriculación voluntaria y abierta",
-    tipo: "Conferencia (Actividad eventual)",
-    caracterAccion: "Voluntario",
-    sistemaEval: "Evaluación de satisfacción",
-    caracter: "No evaluativo",
-    mes: "Julio",
-    prop: "",
-    temas: ""
-},
-
-// --- MATERIA: LABORAL ---
-{
-    m: "LABORAL",
-    t: "INTERPRETACIÓN, APLICACIÓN Y EJECUCIÓN DE LAS LEYES N° 1468, N° 321 Y D.S. N° 28699 EN PROCESOS DE RESTITUCIÓN DE DERECHOS LABORALES",
-    f: "Agosto - Septiembre 2026",
-    mod: "Semipresencial",
-    h: "40 horas",
-    p: "Moodle y Zoom",
-    d: "Vocales de Sala Social de Tribunales Departamentales de Justicia, Jueces de Partido del Trabajo y Seguridad Social de Capitales de departamento, Jueces Mixtos con competencia en materia laboral de ciudades intermedias, Abogados Asistentes de Sala Social del Tribunal Supremo de Justicia",
-    tipo: "Capacitación y actualización",
-    caracterAccion: "Obligatorio (Art. 224-IV de la ley N° 025 y Art. 77-II del Reglamento de Carrera Judicial)",
-    sistemaEval: "Aprendizaje y satisfacción (71/100 puntos. 10 puntos teóricos y 90 puntos práctica)",
-    caracter: "Evaluativo",
-    mes: "Agosto",
-    prop: "Unificar criterios para una adecuada aplicación de la normativa social en los procesos de restitución laboral – reincorporación, y garantizar la conclusión de los procesos en plazos razonables",
-    temas: "<b>UNIDAD 1:</b> Problemática en la Aplicación de la Ley 1468 - Reincorporación Laboral.<br><b>UNIDAD 2:</b> Problemática en la Aplicación de la Ley 321.<br><b>TRANSVERSAL:</b> Ética, Integridad e Independencia Judicial, Perspectiva de Género y Habilidades Blandas."
-},
-{
-    m: "LABORAL",
-    t: "CONVERSATORIO: PROBLEMÁTICA EN LA APLICACIÓN DEL PROCEDIMIENTO EN PROCESOS POR INFRACCIÓN A LEYES SOCIALES",
-    f: "Mayo 2026",
-    mod: "Virtual",
-    h: "8 horas",
-    p: "Moodle y Zoom",
-    d: "Servidores judiciales del área social",
-    tipo: "Conversatorio (Actividad eventual)",
-    caracterAccion: "Obligatorio (Art. 224-IV de la ley N° 025 y Art. 77-II del Reglamento de Carrera Judicial)",
-    sistemaEval: "Evaluación de satisfacción",
-    caracter: "No evaluativo",
-    mes: "Mayo",
-    prop: "",
-    temas: ""
-},
-
-// --- MATERIA: COACTIVO FISCAL ---
-{
-    m: "COACTIVO FISCAL",
-    t: "VALORACIÓN DE LA PRUEBA EN EL PROCESO COACTIVO FISCAL",
-    f: "Marzo - Abril 2026",
-    mod: "Virtual",
-    h: "40 horas",
-    p: "Moodle y Zoom",
-    d: "Vocales de Sala Social de Tribunales Departamentales de Justicia y Jueces de Partido con competencia en materia Coactivo Fiscal de Capitales de departamento",
-    tipo: "Capacitación y actualización",
-    caracterAccion: "Obligatorio (Art. 224-IV de la ley N° 025 y Art. 77-II del Reglamento de Carrera Judicial)",
-    sistemaEval: "Aprendizaje y satisfacción (10 puntos teóricos y 90 puntos parte práctica. Mínimo 71/100)",
-    caracter: "Evaluativo",
-    mes: "Marzo",
-    prop: "Unificar criterios para una correcta y adecuada valoración de la prueba documental que permita la tutela judicial efectiva a través de la resolución correspondiente",
-    temas: "<b>UNIDAD 1:</b> Aspectos Generales del Proceso Coactivo Fiscal.<br><b>UNIDAD 2:</b> Valoración de la Prueba y Medios de Impugnación.<br><b>TRANSVERSAL:</b> Ética, Integridad e Independencia Judicial, Perspectiva de Género y Habilidades Blandas."
-},
-
-// --- MATERIA: FAMILIA ---
-{
-    m: "FAMILIA",
-    t: "ACTOS DE COMUNICACIÓN EN LOS PROCESOS FAMILIARES: SUS PROCEDIMIENTOS, CONTROL DE LEGALIDAD DEL MANDAMIENTO DE APREMIO Y JURISPRUDENCIA CONSTITUCIONAL RELEVANTE",
-    f: "Febrero - Marzo 2026",
-    mod: "Semipresencial",
-    h: "40 horas",
-    p: "Moodle y Zoom",
-    d: "Jueces con competencia en materia Familiar Capital",
-    tipo: "Curso de Actualización y Capacitación",
-    caracterAccion: "Obligatorio (Art. 224-IV de la ley N° 025 y Art. 77-II del Reglamento de Carrera Judicial)",
-    sistemaEval: "Evaluación de aprendizaje, satisfacción (curso y docente) y transferencia (Nota mínima 71)",
-    caracter: "Evaluativo",
-    mes: "Febrero",
-    prop: "Fortalecer la aplicación de criterios de proporcionalidad, razonabilidad y legalidad en el control de actos de comunicación y en la emisión de mandamientos de apremio, dentro de la ejecución de asistencia familiar; ponderando el equilibrio entre el derecho a la libertad y el derecho a la subsistencia mediante el análisis de jurisprudencia y casos prácticos, con el fin de asegurar el debido proceso, evitar nulidades y reducir la interposición de acciones de libertad.",
-    temas: "<b>UNIDAD 1:</b> Actos de Comunicación: Presupuestos del Debido Proceso.<br><b>UNIDAD 2:</b> Ejecución de Mandamientos de Apremio: Proporcionalidad y Límites.<br><b>TRANSVERSAL:</b> Ética, Integridad e Independencia Judicial, Perspectiva de Género y Habilidades Blandas."
-},
-{
-    m: "FAMILIA",
-    t: "CONFERENCIA: CONTROL JUDICIAL DE LA PRUEBA PSICOSOCIAL Y LA PONDERACIÓN EN PROCESOS DE GUARDA EN DESVINCULACION FAMILIAR",
-    f: "Junio 2026",
-    mod: "Virtual",
-    h: "4 horas",
-    p: "Facebook y YouTube",
-    d: "Matriculación voluntaria y abierta",
-    tipo: "Conferencia (Actividad eventual)",
-    caracterAccion: "Voluntario",
-    sistemaEval: "Evaluación de satisfacción",
-    caracter: "No evaluativo",
-    mes: "Junio",
-    prop: "",
-    temas: ""
-},
-
-// --- MATERIA: CIVIL ---
-{
-    m: "CIVIL",
-    t: "LA USUCAPIÓN COMO MECANISMO DE ADQUISICIÓN DEL DERECHO PROPIETARIO",
-    f: "Septiembre - Octubre 2026",
-    mod: "Virtual",
-    h: "40 horas",
-    p: "Moodle y Zoom",
-    d: "Vocales, Jueces con competencia en materia Civil de Capital, provincia y ciudades intermedias",
-    tipo: "Capacitación y actualización",
-    caracterAccion: "Obligatorio (Art. 224-IV de la ley N° 025 y Art. 77-II del Reglamento de Carrera Judicial)",
-    sistemaEval: "Evaluación de aprendizaje y de satisfacción (Nota mínima de aprobación 71/100)",
-    caracter: "Evaluativo",
-    mes: "Septiembre",
-    prop: "Profundizar competencias técnico-jurídicas en la dirección y resolución de procesos de usucapión, mediante la aplicación rigurosa de los criterios de valoración probatoria, la correcta distinción entre posesión y mera detentación, y el dominio del principio de la intervención del título para evitar las deficiencias sistemáticas que generan resoluciones contradictorias y evitar procedimiento fraudulento para adquirir el derecho de propiedad.",
-    temas: "<b>UNIDAD 1:</b> La acción de Usucapión, Posesión: Requisitos, Elementos y Presunciones.<br><b>UNIDAD 2:</b> Usucapión en Conflicto con Propietario Registrado.<br><b>UNIDAD 3:</b> Usucapión de Bienes Sucesorios.<br><b>UNIDAD 4:</b> Posibilidad de Ejercitar la Acción Usucapión de Bienes del Estado.<br><b>UNIDAD 5:</b> Conflicto de Competencias en Jurisdicción Ordinaria y Agroambiental.<br><b>TRANSVERSAL:</b> Ética, Integridad e Independencia Judicial, Perspectiva de Género y Habilidades Blandas."
-},
-{
-    m: "CIVIL",
-    t: "EL PROCESO DE EJECUCIÓN CIVIL: DE LA SENTENCIA A LA REALIDAD",
-    f: "Abril - Mayo 2026",
-    mod: "Semipresencial",
-    h: "40 horas",
-    p: "Moodle y Zoom",
-    d: "Vocales, Jueces con competencia en materia Civil Capital, ciudades intermedias.",
-    tipo: "Capacitación y actualización",
-    caracterAccion: "Obligatorio (Art. 224-IV de la ley N° 025 y Art. 77-II del Reglamento de Carrera Judicial)",
-    sistemaEval: "Evaluación de aprendizaje y de satisfacción (Nota mínima de aprobación 71/100)",
-    caracter: "Evaluativo",
-    mes: "Abril",
-    prop: "Fortalecer la correcta aplicación de los mecanismos legales para la ejecución de las obligaciones de dar, hacer y no hacer, y resolver eficazmente las incidencias procesales y tercerías que puedan surgir en la tramitación de la instancia de ejecución y las medidas necesarias para el cumplimiento de la sentencia.",
-    temas: "<b>UNIDAD 1:</b> Ejecución de Sentencia.<br><b>UNIDAD 2:</b> Incidencias en relación al Art. 400 del Código Procesal Civil.<br><b>UNIDAD 3:</b> La ejecución de Obligación de Dar entrega de bienes y cumplimiento de obligaciones económicas.<br><b>UNIDAD 4:</b> Tercerías en Ejecución de Sentencias.<br><b>UNIDAD 5:</b> Obligaciones de Hacer y No Hacer.<br><b>TRANSVERSAL:</b> Ética, Integridad e Independencia Judicial, Perspectiva de Género y Habilidades Blandas."
-},
-{
-    m: "CIVIL",
-    t: "CONFERENCIA: EL DERECHO REGISTRAL Y SU INCIDENCIA EN LA FUNCIÓN JURISDICCIONAL",
-    f: "Junio 2026",
-    mod: "Virtual",
-    h: "2 horas",
-    p: "Facebook y YouTube",
-    d: "Matriculación voluntaria y abierta",
-    tipo: "Conferencia (Actividad eventual)",
-    caracterAccion: "Voluntario",
-    sistemaEval: "Evaluación de satisfacción",
-    caracter: "No evaluativo",
-    mes: "Junio",
-    prop: "",
-    temas: ""
-},
- 
-
-// --- MATERIA: AGROAMBIENTAL ---
-{
-    m: "AGROAMBIENTAL",
-    t: "EL PERITAJE SOCIO AMBIENTAL COMO PRUEBA CLAVE EN EL PROCESO Y LA REPARACIÓN INTEGRAL POR DAÑO AMBIENTAL",
-    f: "Marzo - Abril 2026",
-    mod: "Semipresencial",
-    h: "40 horas",
-    p: "Moodle y Zoom",
-    d: "Juezas y jueces, personal técnico de los juzgados agroambientales y servidores técnicos del Tribunal Agroambiental",
-    tipo: "Capacitación y actualización",
-    caracterAccion: "Obligatorio (Art. 224-IV de la ley N° 025 y Art. 77-II del Reglamento de Carrera Judicial)",
-    sistemaEval: "Evaluación de aprendizaje y de satisfacción (Nota mínima de aprobación 71/100)",
-    caracter: "Evaluativo",
-    mes: "Marzo",
-    prop: "Propiciar competencias técnico jurídicas en los jueces y juezas, personal técnico de los juzgados agroambientales y servidores técnicos del Tribunal Agroambiental para comprender, valorar y aplicar el peritaje socio ambiental como prueba clave en la tramitación y resolución de las causas ambientales.",
-    temas: "<b>UNIDAD 1:</b> Introducción al Peritaje Socio Ambiental Técnico-Científico y Cultural.<br><b>UNIDAD 2:</b> Derecho de Reparación Integral por Daño Ambiental.<br><b>UNIDAD 3:</b> Evaluación de Impacto Ambiental vs Peritaje Socio Ambiental.<br><b>UNIDAD 4:</b> El Peritaje Socio Ambiental en la Práctica (Guía de Peritaje Ambiental).<br><b>UNIDAD 5:</b> Resoluciones Judiciales Agroambientales y Constitucionales Relevantes.<br><b>TRANSVERSAL:</b> Ética, Integridad e Independencia Judicial, Perspectiva de Género y Habilidades Blandas."
-},
-{
-    m: "AGROAMBIENTAL",
-    t: "PROCESOS Y PROCEDIMIENTOS AMBIENTALES DENTRO DE LA JURISDICCIÓN AGROAMBIENTAL",
-    f: "Agosto - Septiembre 2026",
-    mod: "Semipresencial",
-    h: "42 horas",
-    p: "Moodle y Zoom",
-    d: "Juezas y Jueces Agroambientales capital y provincia a nivel nacional y servidores públicos del Tribunal Agroambiental",
-    tipo: "Curso de capacitación y actualización",
-    caracterAccion: "Obligatorio (Art. 224-IV de la ley N° 025 y Art. 77-II del Reglamento de Carrera Judicial)",
-    sistemaEval: "Evaluación de aprendizaje y de satisfacción (Nota mínima de aprobación 71/100)",
-    caracter: "Evaluativo",
-    mes: "Agosto",
-    prop: "Proporcionar a los jueces, juezas, y servidores del Tribunal Agroambiental, conocimientos y herramientas jurídicas que les permitan comprender, aplicar y conducir de manera eficiente los procesos y procedimientos ambientales dentro de la jurisdicción agroambiental.",
-    temas: "<b>UNIDAD 1:</b> Bases Constitucionales, Convencionales y Jurisprudenciales aplicables.<br><b>UNIDAD 2:</b> Procesos Ambientales (Naturaleza Jurídica, Finalidad y Alcances).<br><b>UNIDAD 3:</b> Fases del Proceso Ambiental.<br><b>UNIDAD 4:</b> Lineamientos del Proyecto de Ley Procesal Agroambiental/Código Procesal Agroambiental.<br><b>TRANSVERSAL:</b> Ética, Integridad e Independencia Judicial, Perspectiva de Género y Habilidades Blandas."
-},
-{
-    m: "AGROAMBIENTAL",
-    t: "CONFERENCIA: TRATAMIENTO JURÍDICO A LA PROBLEMÁTICA DE LOS RELLENOS SANITARIOS",
-    f: "Junio 2026",
-    mod: "Virtual",
-    h: "2 Horas",
-    p: "Facebook y YouTube",
-    d: "Matriculación voluntaria y abierta",
-    tipo: "Conferencia (Actividad eventual)",
-    caracterAccion: "Voluntario",
-    sistemaEval: "Evaluación de satisfacción",
-    caracter: "No evaluativo",
-    mes: "Junio",
-    prop: "",
-    temas: ""
-},
-{
-    m: "AGROAMBIENTAL",
-    t: "TALLER: FLEXIBILIZACIÓN DE FORMALIDADES PROCESALES PARA GARANTIZAR EL ACCESO EFECTIVO A LA JUSTICIA AGROAMBIENTAL POR PARTE DE LAS NACIONES Y PUEBLOS INDÍGENA ORIGINARIO CAMPESINO",
-    f: "Octubre 2026",
-    mod: "Presencial",
-    h: "4 horas",
-    p: "Ninguna",
-    d: "Autoridades Indígena Originario Campesinas",
-    tipo: "Taller (Actividad eventual)",
-    caracterAccion: "Matriculación abierta",
-    sistemaEval: "Evaluación de satisfacción",
-    caracter: "No evaluativo",
-    mes: "Octubre",
-    prop: "Promover el acceso a la justicia agroambiental; a través de la identificación y análisis de las barreras y obstáculos que enfrentan los pueblos indígenas con el fin de flexibilizar las formalidades procesales.",
-    temas: ""
-},
-
-// --- MATERIA: NIÑEZ Y ADOLESCENCIA ---
-{
-    m: "NIÑEZ Y ADOLESCENCIA",
-    t: "TUTELA JUDICIAL Y PROTECCIÓN REFORZADA PARA HIJAS E HIJOS HUÉRFANOS, VÍCTIMAS DE FEMINICIDIO Y OTROS DELITOS CONTRA LA VIDA (LEY 1680)",
-    f: "Julio - Agosto 2026",
-    mod: "Semipresencial",
-    h: "60 horas",
-    p: "Moodle y Zoom",
-    d: "Vocales y Jueces Públicos con competencia en niñez y adolescencia (capital y provincia)",
-    tipo: "Curso de capacitación y actualización",
-    caracterAccion: "Obligatorio (Art. 224-IV de la ley N° 025 y Art. 77-II del Reglamento de Carrera Judicial)",
-    sistemaEval: "Evaluación de aprendizaje y de satisfacción (Nota mínima 71/100)",
-    caracter: "Evaluativo",
-    mes: "Julio",
-    prop: "Promover que los Jueces públicos de Niñez y Adolescencia apliquen la Ley N° 1680 de manera integral, enmarcados en la normativa nacional e internacional, que prioriza el interés superior del niño y el derecho a ser escuchado, garantizando la protección y restablecimiento de los proyectos de vida de las hijas e hijos huérfanos - víctimas.",
-    temas: "<b>MÓDULO 1:</b> Marco Conceptual y Normativo.<br><b>MÓDULO 2:</b> Tutela Judicial Efectiva en el marco de la Ley 1680.<br><b>MÓDULO 3:</b> Medidas de Protección Reforzada – Aplicación Práctica.<br><b>MÓDULO 4:</b> Aspectos Procesales Críticos y Desafíos.<br><b>TRANSVERSAL:</b> Ética, Integridad Judicial, Perspectiva de Género y Habilidades Blandas."
-},
-{
-    m: "NIÑEZ Y ADOLESCENCIA",
-    t: "CONFERENCIA: JUSTICIA PENAL JUVENIL - EJECUCION DE MEDIDAS SOCIOEDUCATIVAS",
-    f: "Abril 2026",
-    mod: "Virtual",
-    h: "2 horas",
-    p: "Facebook y YouTube",
-    d: "Matriculación voluntaria y abierta",
-    tipo: "Conferencia (Actividad eventual)",
-    caracterAccion: "Voluntario",
-    sistemaEval: "Evaluación de satisfacción",
-    caracter: "No evaluativo",
-    mes: "Abril",
-    prop: "",
-    temas: ""
-},
-{
-    m: "NIÑEZ Y ADOLESCENCIA",
-    t: "CONFERENCIA: TUTELA JUDICIAL Y SISTEMA DE PROTECCIÓN A NIÑAS, NIÑOS Y ADOLESCENTES",
-    f: "Mayo 2026",
-    mod: "Virtual",
-    h: "2 horas",
-    p: "Facebook y YouTube",
-    d: "Matriculación voluntaria y abierta",
-    tipo: "Conferencia (Actividad eventual)",
-    caracterAccion: "Voluntario",
-    sistemaEval: "Evaluación de satisfacción",
-    caracter: "No evaluativo",
-    mes: "Mayo",
-    prop: "",
-    temas: ""
-},
-{
-    m: "NIÑEZ Y ADOLESCENCIA",
-    t: "CONVERSATORIO: LA PONDERACION DEL INTERES SUPERIOR DEL NIÑO VICTIMA Y DEL ADOLESCENTE EN CONFLICTO CON LA LEY",
-    f: "Agosto 2026",
-    mod: "Virtual",
-    h: "2 horas",
-    p: "Facebook y YouTube",
-    d: "Matriculación voluntaria y abierta",
-    tipo: "Conversatorio (Actividad eventual)",
-    caracterAccion: "Voluntario",
-    sistemaEval: "Evaluación de satisfacción",
-    caracter: "No evaluativo",
-    mes: "Agosto",
-    prop: "",
-    temas: ""
-},
-
-// --- SECCIÓN: APOYO JURISDICCIONAL (CURSOS DE INDUCCIÓN Y TRANSVERSALES) ---
-{ 
-    m: "APOYO JURISDICCIONAL", 
-    t: "CURSO AUTOFORMATIVO DE INDUCCIÓN PARA SERVIDORES/AS DE DERECHOS REALES", 
-    f: "Disponibilidad permanente", 
-    mod: "Virtual, autoformativo", 
-    h: "40 horas académicas", 
-    p: "Moodle", 
-    d: "Servidores de Derechos Reales de reciente designación a nivel nacional", 
-    tipo: "Curso de capacitación y actualización",
-    caracterAccion: "Obligatorio (Art. 224-IV Ley 025)",
-    sistemaEval: "Teoría (30 pts) y Práctica (70 pts). Mínimo 71/100",
-    caracter: "Inducción / Autoformativo",
-    mes: "Permanente", 
-    prop: "Desarrollar competencias para el uso de sistemas informáticos institucionales, aplicación de principios éticos y atención eficiente a usuarios en Derechos Reales.", 
-    temas: "<b>MÓDULO 1:</b> Introducción a los Servicios Judiciales y Derecho Registral.<br><b>MÓDULO 2:</b> Manejo del Sistema SINAREP (Ventanillas y Gabinete).<br><b>MÓDULO 3:</b> Ética, Transparencia, Procesos Sumarios y Atención al Público.<br><b>MÓDULO 4:</b> Guía de Funciones por Cargos y Servicios." 
-},
-{ 
-    m: "APOYO JURISDICCIONAL", 
-    t: "CURSO AUTOFORMATIVO DE INDUCCIÓN PARA PERSONAL DESIGNADO A LA OFICINA GESTORA DE PROCESOS (OGP)", 
-    f: "Disponibilidad permanente", 
-    mod: "Semipresencial, autoformativo", 
-    h: "100 horas académicas", 
-    p: "Moodle", 
-    d: "Personal designado a trabajar en las Oficinas Gestoras de Procesos a nivel nacional", 
-    tipo: "Curso de capacitación y actualización",
-    caracterAccion: "Obligatorio",
-    sistemaEval: "Teoría (30 pts) y Práctica en sitio (70 pts). Mínimo 71/100",
-    caracter: "Inducción / Autoformativo",
-    mes: "Permanente", 
-    prop: "Fortalecer capacidades en gestión judicial: atención al público, agenda única de audiencias, notificaciones y apoyo en audiencias bajo la Ley N° 1173.", 
-    temas: "<b>MÓDULO 1:</b> Gestión Judicial y Oralidad.<br><b>MÓDULO 2:</b> Atención al público e interoperabilidad.<br><b>MÓDULO 3:</b> Administración de Agenda Única de Audiencias.<br><b>MÓDULO 4:</b> Notificaciones (Personales, Ciudadanía Digital, Edictos).<br><b>MÓDULO 5:</b> Desarrollo de Audiencias (Cisco Webex y actos previos).<br><b>MÓDULO 6:</b> Roles por puesto dentro de la Gestora." 
-},
-{ 
-    m: "APOYO JURISDICCIONAL", 
-    t: "CURSO AUTOFORMATIVO DE INDUCCIÓN PARA PERSONAL DE APOYO JUDICIAL – ÁREA ORDINARIA Y AGROAMBIENTAL", 
-    f: "Disponibilidad permanente", 
-    mod: "Virtual- Autoformativo", 
-    h: "40 horas académicas", 
-    p: "Moodle", 
-    d: "Secretarios, Auxiliares y Oficiales de Diligencias a nivel nacional", 
-    tipo: "Curso de capacitación y Actualización",
-    caracterAccion: "Obligatorio",
-    sistemaEval: "Teoría (30 pts) y Práctica (70 pts). Mínimo 71/100",
-    caracter: "Inducción / Autoformativo",
-    mes: "Permanente", 
-    prop: "Desarrollar competencias en el ejercicio de funciones mediante la comprensión del marco normativo operativo y aplicación de principios de ética y calidad en la atención.", 
-    temas: "<b>MÓDULO 1:</b> Estructura del Órgano Judicial y TIC's.<br><b>MÓDULO 2:</b> Procesos internos: Recepción de causas y comunicaciones judiciales.<br><b>MÓDULO 3:</b> Deberes, ética y régimen disciplinario.<br><b>MÓDULO 4:</b> Funciones en contextos especializados (Penal, Niñez, Familia, Agroambiental)." 
-},
-{ 
-    m: "APOYO JURISDICCIONAL", 
-    t: "CURSO AUTOFORMATIVO DE INDUCCIÓN: ÉTICA E INTEGRIDAD", 
-    f: "Disponibilidad permanente", 
-    mod: "Semipresencial, autoformativo", 
-    h: "40 horas académicas", 
-    p: "Moodle", 
-    d: "Vocales, juezas y jueces", 
-    tipo: "Curso de capacitación y actualización",
-    caracterAccion: "Obligatorio",
-    sistemaEval: "Evaluación de aprendizaje en Moodle. Mínimo 71/100",
-    caracter: "Autoformativo",
-    mes: "Permanente", 
-    prop: "Desarrollar en las/los participantes las competencias necesarias para que desempeñen funciones de manera reflexiva sobre los principios valores y normas éticas.", 
-    temas: "<b>Unidad I:</b> Ética e integridad judicial en la función jurisdiccional.<br><b>Unidad II:</b> Carrera judicial. Independencia e imparcialidad judicial.<br><b>Unidad III:</b> Principios de Bangalore y el Código de Ética Iberoamericano.<br><b>Unidad IV:</b> Aplicación práctica de la ética e integridad judicial." 
-},
-{ 
-    m: "APOYO JURISDICCIONAL", 
-    t: "CURSO AUTOFORMATIVO DE INDUCCIÓN EN DERECHOS HUMANOS Y PERSPECTIVA DE GÉNERO", 
-    f: "Disponibilidad permanente", 
-    mod: "Semipresencial, autoformativo", 
-    h: "30 horas académicas", 
-    p: "Moodle", 
-    d: "Vocales, juezas y jueces y personal de apoyo jurisdiccional", 
-    tipo: "Curso de capacitación y actualización",
-    caracterAccion: "Obligatorio",
-    sistemaEval: "Cuestionarios: Mod 1 y 2 (30 pts c/u), Mod 3 (40 pts). Mínimo 71/100",
-    caracter: "Autoformativo",
-    mes: "Permanente", 
-    prop: "Fortalecer competencias para comprender y razonar en temas de derechos humanos y perspectiva de género, respondiendo a órganos de protección y control de convencionalidad.", 
-    temas: "<b>MÓDULO 1:</b> Sistema Constitucional Boliviano y los Derechos Humanos.<br><b>MÓDULO 2:</b> Herramientas para la aplicación de la perspectiva de género.<br><b>MÓDULO 3:</b> La aplicación de la perspectiva de género en la administración de justicia." 
-}
 
 
 
 
-
-];
 
 
     const meses = ["Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Permanente"];
@@ -883,9 +395,13 @@ const data = [
             
             <div class="social-box hidden" id="social-${c.id}" onclick="event.stopPropagation()"> 
                 <div class="comentario-form">
-                    <input type="text" id="input-${c.id}" placeholder="Escribe una duda o aporte..." 
-                           onkeypress="if(event.key==='Enter') publicarComentario('${c.id}')">
-                    <button onclick="publicarComentario('${c.id}')">➤</button>
+                    
+					<input type="text" id="input-${c.id}" 
+						placeholder="Clic aquí para comentar..." 
+						onclick="if(!usuarioLogueado) iniciarSesionGoogle()"
+						onkeypress="if(event.key==='Enter') publicarComentario('${c.id}')">
+                    
+					<button onclick="publicarComentario('${c.id}')">➤</button>
                 </div>
                 
                 <div class="comentarios-view" id="lista-${c.id}">
@@ -994,8 +510,8 @@ const data = [
 
     function closeM() { document.getElementById('modal').style.display = "none"; }
     
-    renderCards(data);
-    renderTimeline(data);
+   // renderCards(data);
+   // renderTimeline(data);
 </script>
 
 <script>
@@ -1064,41 +580,108 @@ const data = [
 
 <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
 
-<script>
-  // Tu configuración que acabas de obtener
-  const firebaseConfig = {
-    apiKey: "AIzaSyA_pHaYgC2Qyg0y9UPJSvs3qOaLQrChFxM",
-    authDomain: "cursosjudiciales-a827a.firebaseapp.com",
-    databaseURL: "https://cursosjudiciales-a827a-default-rtdb.firebaseio.com",
-    projectId: "cursosjudiciales-a827a",
-    storageBucket: "cursosjudiciales-a827a.firebasestorage.app",
-    messagingSenderId: "954066031986",
-    appId: "1:954066031986:web:3af45b6e54537d3b8db9eb",
-    measurementId: "G-CV5NXNJZEQ"
+<script> 
+  // Tu configuración de Firebase
+ const firebaseConfig = {
+    apiKey: "AIzaSyDvLInjNG-aTtcy9Aah9YYD38HOPpyugPc",
+    authDomain: "cursos-login-41bf9.firebaseapp.com",
+    databaseURL: "https://cursos-login-41bf9-default-rtdb.firebaseio.com",
+    projectId: "cursos-login-41bf9",
+    storageBucket: "cursos-login-41bf9.firebasestorage.app",
+    messagingSenderId: "919456691740",
+    appId: "1:919456691740:web:b941767f9057ebac03d1d9"
   };
 
   // Inicializamos Firebase
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.database();
+	firebase.initializeApp(firebaseConfig);
+	const db = firebase.database();
+  
+	const auth = firebase.auth();
+	const provider = new firebase.auth.GoogleAuthProvider();
+
+	let usuarioLogueado = null;
+	// Escuchamos si el usuario ya está logueado (para no pedirle login cada vez)
+	auth.onAuthStateChanged(user => {
+    usuarioLogueado = user;
+    if (user) {
+        console.log("Conectado como:", user.displayName);
+        // Opcional: Actualizar placeholders
+        document.querySelectorAll('.comentario-form input').forEach(i => i.placeholder = "Escribe tu duda...");
+    }
+	});
+
+	// Función para invocar el login de Google
+	function iniciarSesionGoogle() {
+    return auth.signInWithPopup(provider)
+        .then(result => {
+            console.log("Login exitoso:", result.user.displayName);
+            usuarioLogueado = result.user;
+            return result.user;
+        })
+        .catch(error => {
+            // Esto nos dirá el código de error exacto (ej: auth/operation-not-allowed)
+            console.error("Error detallado de Firebase:", error.code, error.message);
+            alert("Error: " + error.message); 
+        });
+	}
+
+ 
+
+////
+  // --- NUEVA LÓGICA PARA CARGAR CURSOS DESDE FIREBASE ---
+  let data = []; // Variable global donde guardaremos los cursos que vienen de la nube
+
+  // Esta función descarga los cursos una sola vez y renderiza la página
+  function descargarCursos() {
+    const cursosRef = db.ref('cursos');
+    cursosRef.on('value', (snapshot) => {
+        const rawData = snapshot.val();
+        if (rawData) {
+            // Convertimos el objeto de Firebase en un Array para que tus funciones filter y search funcionen
+            data = Object.values(rawData); 
+            
+            // Llamamos a tus funciones originales para pintar la pantalla
+            renderCards(data);
+            renderTimeline(data);
+        } else {
+            document.getElementById('grid-container').innerHTML = "No se encontraron cursos.";
+        }
+    });
+  }
+
+  // Llamamos a la descarga al iniciar
+  descargarCursos();
+  
 
   // FUNCIÓN PARA PUBLICAR UN COMENTARIO
-  function publicarComentario(cursoId) {
+  // Modificamos la función de publicar para que sea inteligente
+	async function publicarComentario(cursoId) {
     const input = document.getElementById(`input-${cursoId}`);
-    const nombre = prompt("Ingresa tu nombre o cargo:") || "Colega Judicial";
     const texto = input.value;
 
     if (texto.trim() === "") return;
 
-    // Guardamos en la nube en la carpeta 'comentarios/ID_DEL_CURSO'
-    db.ref('comentarios/' + cursoId).push({
-      usuario: nombre,
-      mensaje: texto,
-      fecha: new Date().toLocaleString()
-    });
+    // Si no está logueado, pedimos login justo ahora
+    if (!usuarioLogueado) {
+        const user = await iniciarSesionGoogle();
+        if (user) ejecutarEnvio(cursoId, texto, user);
+    } else {
+        ejecutarEnvio(cursoId, texto, usuarioLogueado);
+    }
 
-    input.value = ""; // Limpiamos el cuadro de texto
-  }
+    input.value = ""; // Limpiar el campo
+	}
+	
+	function ejecutarEnvio(cursoId, mensaje, user) {
+    db.ref('comentarios/' + cursoId).push({
+        usuario: user.displayName,
+        foto: user.photoURL,
+        mensaje: mensaje,
+        fecha: new Date().toLocaleString()
+    });
+	}
 
   // FUNCIÓN PARA CARGAR COMENTARIOS AUTOMÁTICAMENTE
   function cargarComentarios(cursoId) {
@@ -1116,14 +699,21 @@ const data = [
             // ACTUALIZA EL BOTÓN CON EL NÚMERO
             boton.innerHTML = `💬 ${cantidad} ${cantidad === 1 ? 'Comentario' : 'Comentarios'}`;
 
-            listaMensajes.forEach(c => {
-                contenedor.innerHTML += `
-                    <div class="comentario-item">
-                        <strong>${c.usuario}:</strong> <span>${c.mensaje}</span><br>
-                        <small style="color: #999; font-size: 10px;">${c.fecha}</small>
-                    </div>
-                `;
-            });
+            // Busca el bucle donde recorres los comentarios y usa este HTML:
+				listaMensajes.forEach(c => {
+					contenedor.innerHTML += `
+						<div class="comentario-item" style="display:flex; gap:10px; margin-bottom:10px; align-items:flex-start;">
+							<img src="${c.foto}" style="width:28px; height:28px; border-radius:50%; border:1px solid #ddd;">
+							<div style="background:#f0f2f5; padding:8px 12px; border-radius:15px; flex:1;">
+								<strong style="font-size:0.85em; color:#004a87; display:block;">${c.usuario}</strong>
+								<span style="font-size:0.9em; color:#333;">${c.mensaje}</span>
+								<small style="display:block; color:#999; font-size:9px; margin-top:4px;">${c.fecha}</small>
+							</div>
+						</div>
+					`;
+				});
+			
+			
         } else {
             // TEXTO CUANDO NO HAY NADA
             boton.innerHTML = `💬 Sin comentarios`;
