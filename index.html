@@ -467,47 +467,7 @@
     });
 }
 
-    function openModal(c) {
-		contarVista(c); // <--- Nueva línea
-        document.getElementById('mTitle').innerText = c.t;
-        
-        // Propósito y Temas (solo si existen)
-        const boxProp = document.getElementById('boxProp');
-        if(c.prop && c.prop.trim() !== "") {
-            boxProp.style.display = "block";
-            document.getElementById('mProp').innerText = c.prop;
-        } else { boxProp.style.display = "none"; }
-
-        const boxTemas = document.getElementById('boxTemas');
-        if(c.temas && c.temas.trim() !== "") {
-            boxTemas.style.display = "block";
-            document.getElementById('mTemas').innerHTML = c.temas;
-        } else { boxTemas.style.display = "none"; }
-
-        // Mapeo de campos requeridos (con los nuevos campos añadidos)
-        const fields = [
-            { label: "TIPO DE ACCIÓN DE CAPACITACIÓN", value: c.tipo },
-            { label: "MODALIDAD", value: c.mod },
-            { label: "FECHA", value: c.f },
-            { label: "CARGA HORARIA", value: c.h },
-            { label: "DIRIGIDO A", value: c.d },
-            { label: "PLATAFORMAS VIRTUALES", value: c.p },
-            { label: "CARACTER DEL CURSO", value: c.caracter },
-            { label: "CARACTER DE LA ACCIÓN DE CAPACITACIÓN", value: c.caracterAccion },
-            { label: "SISTEMA DE EVALUACIÓN", value: c.sistemaEval }
-        ];
-
-        let contentHtml = "";
-        fields.forEach(f => {
-            // Solo añadir el HTML si el valor existe y no es solo espacio
-            if(f.value && f.value.toString().trim() !== "") {
-                contentHtml += `<div class="modal-item"><b>${f.label}</b><div>${f.value}</div></div>`;
-            }
-        });
-
-        document.getElementById('mContent').innerHTML = contentHtml;
-        document.getElementById('modal').style.display = "flex";
-    }
+    
 
     function switchV(v) {
         document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
@@ -540,7 +500,15 @@
 <script>
     // --- NUEVA FUNCIÓN PARA ABRIR EL MODAL ---
     function openModal(c) {
-		contarVista(c); // <--- Nueva línea
+		// 1. Verificamos que el curso tenga un ID antes de contar la vista
+		if (c && c.id) {
+        contarVista(c.id); // <--- Aquí pasamos solo el texto "adm_01", no el objeto
+		} else {
+        console.error("El curso no tiene un ID válido:", c);
+		}
+		
+		
+		
         document.getElementById('mTitle').innerText = c.t;
         
         // Limpiamos y ocultamos las cajas extras siempre al abrir
