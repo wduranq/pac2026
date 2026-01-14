@@ -315,7 +315,7 @@
 
 <main>
     <div class="header-main">
-        <h1>Plan Anual de Capacitación.</h1>
+        <h1>Plan Anual de Capacitación</h1>
         <h2 style="color: var(--eje-red); margin:0;">Gestión Académica 2026</h2>
     </div>
 
@@ -468,7 +468,7 @@
 }
 
     function openModal(c) {
-		
+		contarVista(id); // <--- Nueva línea
         document.getElementById('mTitle').innerText = c.t;
         
         // Propósito y Temas (solo si existen)
@@ -540,7 +540,7 @@
 <script>
     // --- NUEVA FUNCIÓN PARA ABRIR EL MODAL ---
     function openModal(c) {
-		
+		contarVista(id); // <--- Nueva línea
         document.getElementById('mTitle').innerText = c.t;
         
         // Limpiamos y ocultamos las cajas extras siempre al abrir
