@@ -14,7 +14,9 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
     <title>Plan Académico 2026 - EJE</title>
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         :root { 
             --eje-red: #b30000;      
@@ -289,12 +291,20 @@
     font-size: 0.9em;
     color: #333;
 }	
-	
+
+.card {
+    cursor: pointer;
+    /* Evita que el celular resalte el texto al tocar la tarjeta */
+    -webkit-tap-highlight-color: transparent; 
+    /* Indica al navegador que el toque es para disparar una acción */
+    touch-action: manipulation; 
+}	
 	</style>
 </head>
 <body>
 
 <nav>
+
     <div class="nav-header">
         <h2 style="margin:0;">Escuela de Jueces del Estado</h2>
         <small>Formación judicial de Excelencia para una Justicia de calidad</small>
@@ -327,7 +337,10 @@
         <input type="text" id="search" class="search-input" placeholder="Buscar curso o tema..." onkeyup="runSearch()">
 		<div id="user-status" style="text-align: right; padding: 10px; font-size: 14px;">
 		</div>
-        <a href="#" class="download-pdf">📄 DESCARGAR PLAN PDF</a>
+        <a href="https://backend.eje.gob.bo/files/public-assets/b8b17ad613463c3c9a1fe928819fb30cb853e6b1/PAC_UCAP_2026.pdf" 
+		class="download-pdf" 
+		target="_blank" 
+		rel="noopener noreferrer">📄 DESCARGAR PDF</a>
     </div>
 
     <div id="grid-container" class="grid"></div>
@@ -389,7 +402,15 @@
 
         const div = document.createElement('div');
         div.className = `card ${claseBorde}`;
-        div.onclick = () => openModal(c);
+        
+		// Esta es la forma más compatible con móviles y computadoras
+		div.addEventListener('click', (e) => {
+			// Si el clic viene del botón de comentarios, no abrimos el modal
+			if (e.target.closest('.btn-toggle-social') || e.target.closest('.social-box')) {
+			return;
+		}
+		openModal(c);
+	});
 
         div.innerHTML = `
             <span class="tipo-mini">${tipoTexto}</span>
